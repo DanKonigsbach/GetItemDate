@@ -1,5 +1,5 @@
 # GetItemTime
-
+```
 GetItemTime [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-dtsep <sep>] <filename>
 	-dateonly, -do : Only output the date part
 	-timeonly, -to : Only output the time part
@@ -12,7 +12,7 @@ GetItemTime [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-d
 	<filename>     : The file to get the date from
 	                Absolute paths, relative paths, and environment variable replacement are all supported
 	                Only a single filename is supported. Trying to specify more than one filename results in an error
-	
+```	
 GetItemTime outputs the date and/or time when a file's contents were created
 For pictures, this is Date Taken. For videos, this is Media Created
 It might produce useful results for other file types, but this not been verified
