@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GetItemTime", "GetItemTime\GetItemTime.vcxproj", "{CEC5C46F-AF08-4AC2-8667-534075317653}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GetItemDate", "GetItemDate\GetItemDate.vcxproj", "{CEC5C46F-AF08-4AC2-8667-534075317653}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

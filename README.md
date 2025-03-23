@@ -1,13 +1,13 @@
-# GetItemTime
-GetItemTime outputs the date and/or time when a file's contents were created
+# GetItemDate
+GetItemDate outputs the date and/or time when a file's contents were created
 For pictures, this is Date Taken. For videos, this is Media Created
 It might produce useful results for other file types, but this not been verified
 	
-GetItemTime was designed to assist creating scripts that organize files by their creation date
+GetItemDate was designed to assist creating scripts that organize files by their creation date
 	
 ## Syntax
 ```
-GetItemTime [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-dtsep <sep>] <filename>
+GetItemDate [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-dtsep <sep>] <filename>
 	-dateonly, -do : Only output the date part
 	-timeonly, -to : Only output the time part
 	-iso           : Use ISO 8601 date and time separators
@@ -21,14 +21,14 @@ GetItemTime [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-d
 	                Only a single filename is supported. Trying to specify more than one filename results in an error
 ```	
 
-GetItemTIme recognizes either forward slash or hyphen to indicate a parameter. So, `-timesep` and `/timesep` are equally good and mean the same thing.
+GetItemDate recognizes either forward slash or hyphen to indicate a parameter. So, `-timesep` and `/timesep` are equally good and mean the same thing.
 
-GetItemTime supports environment varable replacement in the filename.
+GetItemDate supports environment varable replacement in the filename.
 
-GetItemTime operates on a single file per invocation. Trying to specify more than one file produces an error message.
+GetItemDate operates on a single file per invocation. Trying to specify more than one file produces an error message.
 
 ## Output to Standard Output (STDOUT)
-GetItemTime writes the results to the standard console application output (stdout).
+GetItemDate writes the results to the standard console application output (stdout).
 
 The default is to provide both date and time. You can request to only get the date (-dateonly or -do) or to only get the time (-timeonly or -to). (Specify both and you get nothing.)
 	
@@ -40,14 +40,14 @@ The order of the components is not configurable, it is always: year month day ho
 
 Year is four digits, the other components are two digits, zero padded as needed
 	
-If the file does not have creation date information or is not found or there is any other error, GetItemTime does
+If the file does not have creation date information or is not found or there is any other error, GetItemDate does
 not write anything to standard output (stdout).
 ## Output to Standard Error (STDERR)
 Any error messages are written to the error stream (stderr), so that they are easily separated from the output. Errors would be parameter errors or if the specified file is not found.
 
-Note that GetItemTime does NOT consider it an error if the file is found but does not contain Item Time information. In that case, nothing is written to either STDOUT or STDERR. 
+Note that GetItemDate does NOT consider it an error if the file is found but does not contain Item Time information. In that case, nothing is written to either STDOUT or STDERR. 
 ## Return code (a/k/a %ERRORLEVEL%,  $LASTEXITCODE, ...)	
-GetItemTime also provides a return code to show success or failure.
+GetItemDate also provides a return code to show success or failure.
 Return codes are 0 for success, > 0 for error, < 0 for having no results and also no error (ie. the help message).
 
 ## Examples
@@ -55,12 +55,12 @@ These examples use a fictitious image file `IMAGE.JPG` containing a picture that
 
 ### Default output
 
-The default output format from GetItemTime is:  `YYYY-MM-DD hh:mm:ss`
+The default output format from GetItemDate is:  `YYYY-MM-DD hh:mm:ss`
 <table>
 	<tr>
 		<td>Command Line</td>
 		<td>
-			<code>GetItemTime IMAGE.JPG</code>
+			<code>GetItemDate IMAGE.JPG</code>
 		</td>
 	<tr>
 		<td>STDOUT</td>
@@ -83,7 +83,7 @@ The parameter to output only the date is either `/dateonly` or `/do` (or `-dateo
 	<tr>
 		<td>Command Line</td>
 		<td>
-			<code>GetItemTime IMAGE.JPG /do</code>
+			<code>GetItemDate IMAGE.JPG /do</code>
 		</td>
 	<tr>
 		<td>STDOUT</td>
@@ -106,7 +106,7 @@ The parameter to output only the date is either `/timeonly` or `/to` (or `-timeo
 	<tr>
 		<td>Command Line</td>
 		<td>
-			<code>GetItemTime IMAGE.JPG -to</code>
+			<code>GetItemDate IMAGE.JPG -to</code>
 		</td>
 	<tr>
 		<td>STDOUT</td>
@@ -129,7 +129,7 @@ This is how you would get date and time into a single string with no separators 
 	<tr>
 		<td>Command Line</td>
 		<td>
-			<code>GetItemTime IMAGE.JPG /ds "" /dts "" /ts ""</code>
+			<code>GetItemDate IMAGE.JPG /ds "" /dts "" /ts ""</code>
 		</td>
 	<tr>
 		<td>STDOUT</td>
@@ -152,7 +152,7 @@ This will give you a colon between each field (`YYYY:MM:DD:hh:mm:ss`). Note that
 	<tr>
 		<td>Command Line</td>
 		<td>
-			<code>GetItemTime IMAGE.JPG /ds ":" /dts ":"</code>
+			<code>GetItemDate IMAGE.JPG /ds ":" /dts ":"</code>
 		</td>
 	<tr>
 		<td>STDOUT</td>
@@ -172,12 +172,12 @@ This will give you a colon between each field (`YYYY:MM:DD:hh:mm:ss`). Note that
 
 Return the date and time in ISO 8601 format (`YYYY-MM-DDThh:mm:ss`). This is the same as specifying `/datesep "-" /dtsep "T" /timesep ":"`.
 
-Note that GetItemTime does not support time zone offset or fractions of a second.
+Note that GetItemDate does not support time zone offset or fractions of a second.
 <table>
 	<tr>
 		<td>Command Line</td>
 		<td>
-			<code>GetItemTime IMAGE.JPG /iso</code>
+			<code>GetItemDate IMAGE.JPG /iso</code>
 		</td>
 	<tr>
 		<td>STDOUT</td>
@@ -195,14 +195,14 @@ Note that GetItemTime does not support time zone offset or fractions of a second
 
 ### Missing parameter error
 
-The parameters `/datesep`, `/dtsep`, and `/timesep` must be followed by another parameter giving the separator value. If not, then GetItemTime reports this as an error.
+The parameters `/datesep`, `/dtsep`, and `/timesep` must be followed by another parameter giving the separator value. If not, then GetItemDate reports this as an error.
 
-Note that this parameter is processed by the quoting rules are used by whatever invokes GetItemTime.  So, if this is coming from the command prompt and your separator value is an empty string or contains a space, then you will need quotation marks around the value.
+Note that this parameter is processed by the quoting rules are used by whatever invokes GetItemDate.  So, if this is coming from the command prompt and your separator value is an empty string or contains a space, then you will need quotation marks around the value.
 <table>
 	<tr>
 		<td>Command Line</td>
 		<td>
-			<code>GetItemTime IMAGE.JPG /ds </code>
+			<code>GetItemDate IMAGE.JPG /ds </code>
 		</td>
 	<tr>
 		<td>STDOUT</td>

@@ -1,17 +1,17 @@
 // ----------------------------------------------------------------------------
 //
-//								GetItemTime
+//								GetItemDate
 //
-// GetItemTime is a Windows command line utility that outputs the date and/or 
+// GetItemDate is a Windows command line utility that outputs the date and/or 
 // time when a file's contents were created. 
 // 
 // For pictures, this is Date Taken. For videos, this is Media Created. It might 
 // produce useful results for other file types, but this not been verified.
 // 
-// GetItemTime was designed to assist creating scripts that organize files by 
+// GetItemDate was designed to assist creating scripts that organize files by 
 // their creation date.
 // 
-// For syntax and usage, run: GetItemTime /?
+// For syntax and usage, run: GetItemDate /?
 // 
 // ----------------------------------------------------------------------------
 // 
@@ -69,7 +69,7 @@ bool operator==(const FILETIME& ft1, const FILETIME& ft2)
 
 void ShowUsage()
 {
-	std::wcerr << L"GetItemTime [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-dtsep <sep>] <filename>" << std::endl;
+	std::wcerr << L"GetItemDate [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-dtsep <sep>] <filename>" << std::endl;
 	std::wcerr << L"  -dateonly, -do : Only output the date part" << std::endl;
 	std::wcerr << L"  -timeonly, -to : Only output the time part" << std::endl;
 	std::wcerr << L"  -iso           : Use ISO 8601 date and time separators" << std::endl;
@@ -82,11 +82,11 @@ void ShowUsage()
 	std::wcerr << L"                   Absolute paths, relative paths, and environment variable replacement are all supported." << std::endl;
 	std::wcerr << L"                   Only a single filename is supported. Trying to specify more than one filename results in an error." << std::endl;
 	std::wcerr << std::endl;
-	std::wcerr << L"GetItemTime outputs the date and/or time when a file's contents were created." << std::endl;
+	std::wcerr << L"GetItemDate outputs the date and/or time when a file's contents were created." << std::endl;
 	std::wcerr << L"For pictures, this is Date Taken. For videos, this is Media Created." << std::endl;
 	std::wcerr << L"It might produce useful results for other file types, but this not been verified." << std::endl;
 	std::wcerr << std::endl;
-	std::wcerr << L"GetItemTime was designed to assist creating scripts that organize files by their creation date." << std::endl;
+	std::wcerr << L"GetItemDate was designed to assist creating scripts that organize files by their creation date." << std::endl;
 	std::wcerr << std::endl;
 	std::wcerr << L"The default is to provide both date and time. You can request to only get the date (-dateonly or -do)" << std::endl;
 	std::wcerr << L"or to only get the time (-timeonly or -to). (Specify both and you get nothing.)" << std::endl;
@@ -99,14 +99,14 @@ void ShowUsage()
 	std::wcerr << L"The order of the components is not configurable, it is always: year month day hour minute seconds." << std::endl;
 	std::wcerr << L"Year is four digits, the other components are two digits, zero padded as needed." << std::endl;
 	std::wcerr << std::endl;
-	std::wcerr << L"GetItemTime writes the results to the standard console application output (stdout)." << std::endl;
+	std::wcerr << L"GetItemDate writes the results to the standard console application output (stdout)." << std::endl;
 	std::wcerr << L"Any error messages are written to the error stream (stderr), so that they are easily separated from the output." << std::endl;
 	std::wcerr << std::endl;
-	std::wcerr << L"If the file does not have creation date information or is not found or there is any other error, GetItemTime does" << std::endl;
+	std::wcerr << L"If the file does not have creation date information or is not found or there is any other error, GetItemDate does" << std::endl;
 	std::wcerr << L"not write anything to standard output (stdout). If the output is empty, you got nothing. If it's not empty," << std::endl;
 	std::wcerr << L"you got the date and/or time." << std::endl;
 	std::wcerr << std::endl;
-	std::wcerr << L"GetItemTime also provides a return code to show success or failure (although just checking for empty output is easier)." << std::endl;
+	std::wcerr << L"GetItemDate also provides a return code to show success or failure (although just checking for empty output is easier)." << std::endl;
 	std::wcerr << L"Return codes are 0 for success, > 0 for error, < 0 for having no results and also no error (ie. this help message)." << std::endl;
 }
 
