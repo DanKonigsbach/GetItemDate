@@ -33,10 +33,11 @@ GetItemTime writes the results to the standard console application output (stdou
 The default is to provide both date and time. You can request to only get the date (-dateonly or -do) or to only get the time (-timeonly or -to). (Specify both and you get nothing.)
 	
 The separators between the date components defaults to "-", but you can change that to anything that you want, including no separator at all
-The separators between the date and the time defaults to a space, but is similarly configurable
-The separators between the time components defaults to ":", but is also similarly configurable
+The separators between the date and the time defaults to a space, but is similarly configurable.
+The separators between the time components defaults to ":", but is also similarly configurable.
 	
 The order of the components is not configurable, it is always: year month day hour minute seconds
+
 Year is four digits, the other components are two digits, zero padded as needed
 	
 If the file does not have creation date information or is not found or there is any other error, GetItemTime does
@@ -44,7 +45,6 @@ not write anything to standard output (stdout).
 ## Output to Standard Error (STDERR)
 Any error messages are written to the error stream (stderr), so that they are easily separated from the output. Errors would be parameter errors or if the specified file is not found.
 
-[!NOTE]
 Note that GetItemTime does NOT consider it an error if the file is found but does not contain Item Time information. In that case, nothing is written to either STDOUT or STDERR. 
 ## Return code (a/k/a %ERRORLEVEL%,  $LASTEXITCODE, ...)	
 GetItemTime also provides a return code to show success or failure.
@@ -68,6 +68,7 @@ The default output format from GetItemTime is:  `YYYY-MM-DD hh:mm:ss`
 	</tr>
 	<tr>
 		<td>STDERR</td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>Return code</td>
@@ -90,6 +91,7 @@ The parameter to output only the date is either `/dateonly` or `/do` (or `-dateo
 	</tr>
 	<tr>
 		<td>STDERR</td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>Return code</td>
@@ -112,6 +114,7 @@ The parameter to output only the date is either `/timeonly` or `/to` (or `-timeo
 	</tr>
 	<tr>
 		<td>STDERR</td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>Return code</td>
@@ -134,6 +137,7 @@ This is how you would get date and time into a single string with no separators 
 	</tr>
 	<tr>
 		<td>STDERR</td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>Return code</td>
@@ -156,6 +160,32 @@ This will give you a colon between each field (`YYYY:MM:DD:hh:mm:ss`). Note that
 	</tr>
 	<tr>
 		<td>STDERR</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>Return code</td>
+		<td>0</td>
+	</tr>
+</table>
+
+### ISO 8601 format
+
+Return the date and time in ISO 8601 format (`YYYY-MM-DDThh:mm:ss`). This is the same as specifying `/datesep "-" /dtsep "T" /timesep ":"`.
+
+Note that GetItemTime does not support time zone offset or fractions of a second.
+<table>
+	<tr>
+		<td>Command Line</td>
+		<td>
+			<code>GetItemTime IMAGE.JPG /iso</code>
+		</td>
+	<tr>
+		<td>STDOUT</td>
+		<td><samp>2021-01-06T09:07:05</samp></td>
+	</tr>
+	<tr>
+		<td>STDERR</td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>Return code</td>
