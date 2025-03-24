@@ -7,7 +7,7 @@ GetItemDate was designed to assist creating scripts that organize files by their
 	
 ## Syntax
 ```
-GetItemDate [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-dtsep <sep>] <filename>
+GetItemDate [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-dtsep <sep>] [-?] <filename>
 	-dateonly, -do : Only output the date part
 	-timeonly, -to : Only output the time part
 	-iso           : Use ISO 8601 date and time separators
@@ -16,6 +16,7 @@ GetItemDate [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-d
 	-datesep, -ds  : Specify the date separator (Default: "-")
 	-dtsep, -dts   : Specify the date-time separator (Default: " ")
 	-timesep, -ts  : Specify the time separator (Default: ":")
+	-?, -h, -help  : Show help message and exit
 	<filename>     : The file to get the date from
 	                Absolute paths, relative paths, and environment variable replacement are all supported
 	                Only a single filename is supported. Trying to specify more than one filename results in an error

@@ -46,6 +46,8 @@
 #include <shobjidl.h>
 #include <propvarutil.h>
 
+const wchar_t szBuildDateTime[] = L"Built " __DATE__ L" " __TIME__;
+
 struct Parameters
 {
     std::wstring strFilename;
@@ -69,7 +71,7 @@ bool operator==(const FILETIME& ft1, const FILETIME& ft2)
 
 void ShowUsage()
 {
-	std::wcerr << L"GetItemDate [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-dtsep <sep>] <filename>" << std::endl;
+	std::wcerr << L"GetItemDate [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-dtsep <sep>] [-?] <filename>" << std::endl;
 	std::wcerr << L"  -dateonly, -do : Only output the date part" << std::endl;
 	std::wcerr << L"  -timeonly, -to : Only output the time part" << std::endl;
 	std::wcerr << L"  -iso           : Use ISO 8601 date and time separators" << std::endl;
@@ -78,6 +80,7 @@ void ShowUsage()
 	std::wcerr << L"  -datesep, -ds  : Specify the date separator (Default: \"-\")" << std::endl;
 	std::wcerr << L"  -dtsep, -dts   : Specify the date-time separator (Default: \" \")" << std::endl;
 	std::wcerr << L"  -timesep, -ts  : Specify the time separator (Default: \":\")" << std::endl;
+	std::wcerr << L"  -?, -h, -help  : Show this help message and exit" << std::endl;
 	std::wcerr << L"  <filename>     : The file to get the date from" << std::endl;
 	std::wcerr << L"                   Absolute paths, relative paths, and environment variable replacement are all supported." << std::endl;
 	std::wcerr << L"                   Only a single filename is supported. Trying to specify more than one filename results in an error." << std::endl;
@@ -108,6 +111,8 @@ void ShowUsage()
 	std::wcerr << std::endl;
 	std::wcerr << L"GetItemDate also provides a return code to show success or failure (although just checking for empty output is easier)." << std::endl;
 	std::wcerr << L"Return codes are 0 for success, > 0 for error, < 0 for having no results and also no error (ie. this help message)." << std::endl;
+	std::wcerr << std::endl;
+	std::wcerr << std::wstring(szBuildDateTime) << std::endl;
 }
 
 // Return values:
@@ -138,6 +143,7 @@ int ParseArgs(Parameters& params, int argc, wchar_t* argv[])
 			}
 			else if (0 == _wcsicmp(&argv[i][1], L"h") ||
 				     0 == _wcsicmp(&argv[i][1], L"help") ||
+				     0 == _wcsicmp(&argv[i][1], L"-help") ||  // Allow --help as well
 				     0 == _wcsicmp(&argv[i][1], L"?"))
 			{
 				ShowUsage();
@@ -199,6 +205,11 @@ int ParseArgs(Parameters& params, int argc, wchar_t* argv[])
 				return 0;
 			}
 		}
+	}
+	if (params.strFilename.empty())
+	{
+		ShowUsage();
+		return -1;
 	}
 	return 1;
 }
