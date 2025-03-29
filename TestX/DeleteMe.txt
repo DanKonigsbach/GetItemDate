@@ -1,0 +1,3 @@
+echo Add a comment about unblocking the script after downloading
+
+powershell -ExecutionPolicy RemoteSigned -File Test.ps1 ..\x64\Debug\GetItemDate.exe

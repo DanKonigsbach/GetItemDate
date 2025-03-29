@@ -299,7 +299,7 @@ int wmain(int argc, wchar_t* argv[])
 				// Expand and normalize the filename
 				auto pathFilename = std::filesystem::absolute(params.strFilename).wstring();
 
-				auto itemft = GetItemDate(params.strFilename);
+				auto itemft = GetItemDate(pathFilename);
 				if (itemft == ftNull)
 				{
 					std::wcerr << L"Failed to get item date for \"" << pathFilename << "\"." << std::endl;
