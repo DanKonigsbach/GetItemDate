@@ -1,10 +1,10 @@
 # GetItemDate
 GetItemDate outputs the date and/or time when a file's contents were created
 For pictures, this is Date Taken. For videos, this is Media Created
-It might produce useful results for other file types, but this not been verified
+It might produce useful results for other file types, but this not been verified.
 	
-GetItemDate was designed to assist creating scripts that organize files by their creation date
-	
+GetItemDate was designed to assist creating scripts that organize files by their creation date.
+
 ## Syntax
 ```
 GetItemDate [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-dtsep <sep>] [-?] <filename>
