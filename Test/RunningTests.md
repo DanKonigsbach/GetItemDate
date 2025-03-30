@@ -18,6 +18,8 @@ makes it easy to run the tests outside of Visual Studio.
 ## Running the Tests within Visual Studio
 Within Visual Studio, you run the tests by Debugging the Test project. This will run the tests and show you the results.
 
+You may get a warning "This project is out of date: [...] Would you like to build it?" That's okay. Just click the "No" button to continue.
+
 The tests are not integrated with the Visual Studio Test Explorer.
 
 ## Running the Tests outside of Visual Studio

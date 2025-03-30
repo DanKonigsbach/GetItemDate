@@ -1,4 +1,4 @@
-MIT License, as amended
+MIT License
 
 Copyright (c) 2025 Daniel B. Konigsbach
 
@@ -19,8 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-Amendment 2025-03-27 Daniel B. Konigsbach
-The above rights do not extend to the test images. They may be freely used in
-order to test this software and derived software. They may NOT be used to 
-impersonate me or to claim a different identity.
