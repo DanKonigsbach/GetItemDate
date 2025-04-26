@@ -7,14 +7,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GetItemDate", "GetItemDate\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
 	ProjectSection(SolutionItems) = preProject
-		google57a6100b7b8f9310.html = google57a6100b7b8f9310.html
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		index.html = index.html
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{121AA892-32AF-4C85-93F8-6A63F6093785}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Docs", "Docs\", "{29F559A1-143D-7038-A368-B91C5016CF54}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Docs", "docs\", "{29F559A1-143D-7038-A368-B91C5016CF54}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_64860"
@@ -32,6 +34,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Docs", "Docs\", "{29F559A1-
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "64860"
+		SlnRelativePath = "docs\"
 	EndProjectSection
 EndProject
 Global
