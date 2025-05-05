@@ -1,0 +1,26 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.syntax {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #f4f4f4;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+table.paramdescr {
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid purple;
+    vertical-align: top;
+}
+
+    table.paramdescr th, td {
+        vertical-align: top;
+        border-collapse: collapse;
+        border: 2px solid purple;
+        text-align: left;
+        padding: 10px;
+    }
+
