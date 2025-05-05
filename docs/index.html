@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <title>How to get the date a photo was taken (programmatically)</title>
+</head>
+<body>
+    <h1>How to get the date a photo was taken (programmatically)</h1>
+    <p>
+        When someone has a large photograph collection, one natural way
+        to organize the photos is by the date that the photo was taken.
+    </p>
+    <p>
+        If the photos are not organized that way, it's
+        natural to consider making a script to move them into folders based on the
+        date they were taken.
+    </p>
+    <p>
+        It <i>seems</i> like getting the date taken ought to be easy. Lots of
+        programs do that for you. If you look at the image properties, it's right there.
+        How hard can it be?
+    </p>
+    <p>
+        Not as straightforward as you might expect. If you try to use Windows APIs to get the date taken,
+        you'll likely run into a bunch of dead ends and frustrations. Thats why you'll find lots of posted questions
+        asking how to do this.
+    </p>
+    <p>
+        I'll try to help you avoid some of those frustrations.
+    </p>
+    <h2>ExifTool</h2>
+    <p>The usual recommendation for getting the date that a photo was taken is to use <a href="https://ExifTool.org/" target="_blank">ExifTool, from Phil Harvey</a>.</p>
+    <p>
+        ExifTool is a fantastic utility for getting, and even setting, image metadata. Extracting the date that an image was
+        taken is a piece of cake and barely scratches the surface of what ExifTool can do. It's very powerful and extremely flexible.
+    </p>
+    <p>
+        For the newcomer, ExifTool's options can be daunting. If what you want is it to return the date that an image was taken, here is how to do it:
+    </p>
+    <h3>How to get ExifTool</h3>
+    <p>
+        If you don't already have ExifTool, download it from <a href="https://exiftool.org/">here</a>.  You will almost certainly want to install it some place in your PATH
+        (or add whereever you choose to install it to your PATH). When you install it, you'll have an executable named ExifTool(-k).
+        (In Windows, that will be ExifTool(-k).exe.) That automatically provides the "-k" option, which is very useful for interactive work. For a script, though,
+        it just gets into the way. You will want to either rename the executable or make a copy in the same directory without the "(-k)", for example, in Windows,
+        ExifTook.exe. Now, you're ready to use it as a command line utility.
+    </p>
+    <h3>How to use ExifTool to get the image date (and nothing else)</h3>
+    <p>Your command to extract the date an image was taken will look something like this:</p>
+    <code class="syntax">
+        ExifTool.exe -CreateDate -s3 -d "%Y-%m-%d %H:%M:%S" <i>filename</i>
+    </code>
+    <p>where:</p>
+    <table class="paramdescr">
+        <tbody>
+            <tr>
+                <th><p><nobr><code>-CreateDate</code></nobr></p></th>
+                <td>
+                    <p>Asks ExifTool to return the date that the image was created.</p>
+                    <p>
+                        ExifTool can extract lots of attributes from an image file. Each of those attributes has a name, which the ExifTool documentation refers to as a TAG.
+                        You can select individual attributes by putting -TAG on the command line.
+                    </p>
+                    <p>
+                        The TAG <code>CreateDate</code> will give you the date and time that the image was taken. Although there are other TAGs wil similar, closely related information,
+                        <code>CreateDate</code> has
+                        the benefit of working for both images and videos.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th><p><nobr><code>-s3</code></nobr></p></th>
+                <td>
+                    <p>Suppresses the output of the tag name</p>
+                    <p>
+                        ExifTool normally labels the values it extracts, and can do so in a wide variety of useful formats. But if you are writing a script and you just want
+                        the plain, unadorned value, you can specify <code>-s3</code>, which means "short-short-short", to get that.
+                    </p>
+                    <p>Other format options include JSON (<code>-j</code>), XML (<code>-X</code>), CSV (<code>-csv</code>), HTML (<code>-h</code>), and plenty others.</p>
+                </td>
+            </tr>
+            <tr>
+                <th><p><nobr><code>-d</code></nobr></p></th>
+                <td>
+                    <p>Lets you control the format of a datetime output.</p>
+                    <p>examples:</p>
+                    <ul>
+                        <li><code>-d "%Y-%m-%d %H:%M:%S"</code> gives you a date in the format YYYY-MM-DD HH:MM:SS</li>
+                        <li><code>-d "%Y-%m-%d"</code> gives you a date in the format YYYY-MM-DD</li>
+                        <li><code>-d "%Y:%m:%d"</code> gives you a date in the format YYYY:MM:DD</li>
+
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>To see all of ExifTool's options, run it without any parameters.'</p>
+    <code class="syntax">
+        ExifTool.exe
+    </code>
+    <h2>GetItemDate</h2>
+    <p>
+        ExifTool is a very powerful and flexible tool. Not surprisingly, it has a fairly heavy installation footprint. For a simple script, that could be
+        burdensome. GetItemDate is a small, self-contained Windows utility that does just the job of getting and formatting the date that an
+        image or video was taken.
+    </p>
+    <p>You can find GetItemDate in GitHub, where you can download <a href="https://github.com/DanKonigsbach/GetItemDate/releases/">a compiled executable</a> or <a href="https://github.com/DanKonigsbach/GetItemDate">download the source code</a> and build it yourself.</p>
+    <p>Run GetItemDate by itself to see the command-line options it offers.</p>
+    <p>Full instructions on how to use it are on the <a href="https://github.com/DanKonigsbach/GetItemDate">GitHub page</a>.</p>
+</body>
+</html>
