@@ -12,14 +12,14 @@ body {
 table.paramdescr {
     width: 100%;
     border-collapse: collapse;
-    border: 3px solid purple;
+    border: 3px solid black;
     vertical-align: top;
 }
 
     table.paramdescr th, td {
         vertical-align: top;
         border-collapse: collapse;
-        border: 2px solid purple;
+        border: 2px solid black;
         text-align: left;
         padding: 10px;
     }

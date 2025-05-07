@@ -3,8 +3,9 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <meta name="description" content="How to get the date that an image was taken (DateTaken, ItemDate) programmatically using ExifTool or GetItemDate">
     <title>How to get the date a photo was taken (programmatically)</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
 </head>
 <body>
     <h1>How to get the date a photo was taken (programmatically)</h1>
@@ -23,12 +24,13 @@
         How hard can it be?
     </p>
     <p>
-        Not as straightforward as you might expect. If you try to use Windows APIs to get the date taken,
+        It's mot as straightforward as you might expect. If you try to use Windows APIs to get the date taken,
         you'll likely run into a bunch of dead ends and frustrations. Thats why you'll find lots of posted questions
-        asking how to do this.
+        asking how to do this. I recommend using a tool that is designed to do this, rather than trying to code
+        it inside of your script.
     </p>
     <p>
-        I'll try to help you avoid some of those frustrations.
+        I'll show you two different tools that easily pull out the date that a picture or a video was taken: ExifTool and GetItemDate.
     </p>
     <h2>ExifTool</h2>
     <p>The usual recommendation for getting the date that a photo was taken is to use <a href="https://ExifTool.org/" target="_blank">ExifTool, from Phil Harvey</a>.</p>
@@ -50,7 +52,7 @@
     <h3>How to use ExifTool to get the image date (and nothing else)</h3>
     <p>Your command to extract the date an image was taken will look something like this:</p>
     <code class="syntax">
-        ExifTool.exe -CreateDate -s3 -d "%Y-%m-%d %H:%M:%S" <i>filename</i>
+        ExifTool -CreateDate -s3 -d "%Y-%m-%d %H:%M:%S" <i>filename</i>
     </code>
     <p>where:</p>
     <table class="paramdescr">
@@ -98,7 +100,12 @@
     </table>
     <p>To see all of ExifTool's options, run it without any parameters.'</p>
     <code class="syntax">
-        ExifTool.exe
+        ExifTool
+    </code>
+    <h3>Example</h3>
+    <p>Here is a way to use ExifTool get the date that the image was taken, in the format <code>yyyy-mm-dd</code>, from a picture file <code>foo.jpg</code>:</p>
+    <code class="syntax">
+        ExifTool -CreateDate -s3 -d "%Y-%m-%d" foo.jpg
     </code>
     <h2>GetItemDate</h2>
     <p>
@@ -106,8 +113,100 @@
         burdensome. GetItemDate is a small, self-contained Windows utility that does just the job of getting and formatting the date that an
         image or video was taken.
     </p>
+    <h3>How to get GetItemDate</h3>
     <p>You can find GetItemDate in GitHub, where you can download <a href="https://github.com/DanKonigsbach/GetItemDate/releases/">a compiled executable</a> or <a href="https://github.com/DanKonigsbach/GetItemDate">download the source code</a> and build it yourself.</p>
-    <p>Run GetItemDate by itself to see the command-line options it offers.</p>
-    <p>Full instructions on how to use it are on the <a href="https://github.com/DanKonigsbach/GetItemDate">GitHub page</a>.</p>
+    <h3>GetItemDate syntax</h3>
+    <code class="syntax">
+        GetItemDate [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-dtsep <sep>] [-?] &lt;filename&gt;
+    </code>
+    <p>where:</p>
+    <table class="paramdescr">
+        <tbody>
+            <tr>
+                <th><p><nobr><code>-dateonly</code>, <code>-do</code></nobr></p></th>
+                <td>
+                    <p>Only output the date part.</p>
+                </td>
+            </tr>
+            <tr>
+                <th><p><nobr><code>-timeonly</code>, <code>-to</code></nobr></p></th>
+                <td>
+                    <p>Only output the time part</p>
+                </td>
+            </tr>
+            <tr>
+                <th><p><nobr><code>-iso</code></nobr></p></th>
+                <td>
+                    <p>Use ISO 8601 date and time separators</p>
+                    <p>
+                        This is an abbreviation for:<br />
+                        <code>-datesep "-" -dtsep "T"  -timesep ":"</code><br />
+                        which yields:<br />
+                        <code>YYYY-MM-DDThh:mm:ss</code>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th><p><nobr><code>-datesep</code>, <code>-ds</code></nobr></p></th>
+                <td>
+                    <p>Specify the date separator (Default: <code>"-"</code>)</p>
+                    <p>
+                        This can be any number of characters, including zero.
+                        You can eliminate date separators altogether with <code>-ds ""</code>
+                    </p>
+                    <p>This is ignored if request <code>-timeonly</code></p>
+                </td>
+            </tr>
+            <tr>
+                <th><p><nobr><code>-dtsep</code>, <code>-dts</code></nobr></p></th>
+                <td>
+                    <p>Specify the date-time separator (Default: <code>" "</code>)</p>
+                    <p>
+                        This can be any number of characters, including zero.
+                        You can eliminate the date separator altogether with <code>-dts ""</code>
+                    </p>
+                    <p>This is ignored if request <code>-dateonly</code> (inclusive) or <code>-timeonly</code></p>
+                </td>
+            </tr>
+            <tr>
+                <th><p><nobr><code>-timesep</code>, <code>-ts</code></nobr></p></th>
+                <td>
+                    <p>Specify the time separator (Default: <code>":"</code>)</p>
+                    <p>
+                        This can be any number of characters, including zero.
+                        You can eliminate time separators altogether with <code>-ts ""</code>
+                    </p>
+                    <p>This is ignored if request <code>-dateonly</code></p>
+                </td>
+            </tr>
+            <tr>
+                <th><p><nobr><code>&lt;filename&gt;</code></nobr></p></th>
+                <td>
+                    <p>
+                        The file to get the date from
+                    </p>
+                    <p>Absolute paths, relative paths, and environment variable replacement are all supported.</p>
+                    <p>Only a single filename is supported. Trying to specify more than one filename results in an error.</p>
+                </td>
+            </tr>
+            <tr>
+                <th><p><nobr><code>-?</code>, <code>-h</code>, <code>-help</code></nobr></p></th>
+                <td>
+                    <p>Show help message and exit.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        GetItemDate recognizes either forward slash or hyphen to indicate a parameter.
+        So, <code>-timesep</code> and <code>/timesep</code> are equally good and mean the same thing.
+    </p>
+    <p>You can also run GetItemDate by itself to see the command-line options it offers.</p>
+    <p>Full instructions, along with examples, on how to use it are on the <a href="https://github.com/DanKonigsbach/GetItemDate">GitHub page</a>.</p>
+    <h3>Example</h3>
+    <p>Here is a way to use GetItemDate get the date that the image was taken, in the format <code>yyyy-mm-dd</code>, from a picture file <code>foo.jpg</code>:</p>
+    <code class="syntax">
+        GetItemDate -dateonly foo.jpg
+    </code>
 </body>
 </html>

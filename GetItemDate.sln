@@ -15,18 +15,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{121AA892-32AF-4C85-93F8-6A63F6093785}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Docs", "docs\", "{29F559A1-143D-7038-A368-B91C5016CF54}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "docs", "docs\", "{29F559A1-143D-7038-A368-B91C5016CF54}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_64860"
-		Debug.AspNetCompiler.PhysicalPath = "Docs\"
+		Debug.AspNetCompiler.PhysicalPath = "docs\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64860\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_64860"
-		Release.AspNetCompiler.PhysicalPath = "Docs\"
+		Release.AspNetCompiler.PhysicalPath = "docs\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64860\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
