@@ -24,10 +24,6 @@ GetItemDate [-dateonly] [-timeonly] [-iso] [-datesep <sep>] [-timesep <sep>] [-d
 
 GetItemDate recognizes either forward slash or hyphen to indicate a parameter. So, `-timesep` and `/timesep` are equally good and mean the same thing.
 
-GetItemDate supports environment varable replacement in the filename.
-
-GetItemDate operates on a single file per invocation. Trying to specify more than one file produces an error message.
-
 ## Output to Standard Output (STDOUT)
 GetItemDate writes the results to the standard console application output (stdout).
 

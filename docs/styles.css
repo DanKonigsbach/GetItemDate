@@ -21,6 +21,7 @@ table.paramdescr {
         border-collapse: collapse;
         border: 2px solid black;
         text-align: left;
-        padding: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
